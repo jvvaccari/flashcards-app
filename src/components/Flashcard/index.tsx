@@ -1,7 +1,13 @@
 import { Box } from "@mantine/core";
 import React, { useState } from "react";
 
-const Flashcard = ({ front, back }: { front: string; back: string }) => {
+const Flashcard = ({
+  front,
+  children,
+}: {
+  front: string;
+  children: React.ReactNode;
+}) => {
   const [flipped, setFlipped] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
@@ -82,7 +88,7 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
             transform: "rotateY(-180deg)",
           }}
         >
-          <Box component="img" src={back} alt="Back" style={imgStyle} />
+          {children}
         </Box>
       </Box>
     </Box>

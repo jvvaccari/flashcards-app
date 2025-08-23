@@ -1,12 +1,15 @@
 import "./App.css";
 import Flashcard from "./components/Flashcard";
 import front from "./assets/front.jpg";
-import back from "./assets/back.jpg";
+import BackContent from "./components/Flashcard/BackContent";
 
 function App() {
   return (
     <>
-      <Flashcard front={front} back={back} />
+      <Flashcard
+        front={front}
+        children={<BackContent content="Back content goes here" />}
+      />
     </>
   );
 }
