@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, useTheme } from "@mui/material";
 
 import ControlButton from "./ControlButton";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
@@ -38,13 +38,14 @@ function ControlBar({
   handleUploadClick: () => void;
   handleSaveContent: () => void;
 }) {
+  const theme = useTheme();
   return (
     <Stack
       direction={"row"}
       spacing={4}
       sx={{
         justifyContent: "center",
-        backgroundColor: "#f0faff",
+        backgroundColor: theme.palette.background.paper,
         width: "100vw",
         py: 1,
       }}

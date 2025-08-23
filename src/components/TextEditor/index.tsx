@@ -63,6 +63,7 @@ const TextEditor = ({
           height: "calc(100vh - 64px)",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
         <Box
@@ -81,6 +82,7 @@ const TextEditor = ({
             overflow: "auto",
             position: "relative",
           }}
+          className="editor"
           onClick={() => editor?.chain().focus().run()}
         >
           <EditorContent
@@ -90,7 +92,6 @@ const TextEditor = ({
               minHeight: "100%",
               fontSize: "16px",
             }}
-            className="editor"
           />
         </Box>
       </Stack>
