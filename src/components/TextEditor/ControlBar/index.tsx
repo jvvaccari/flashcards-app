@@ -1,29 +1,76 @@
-import ClearIcon from "@mui/icons-material/Clear";
-import ControlButton from "./ControlButton";
-import Box from "@mui/material/Box";
-import ControlButtonGrid from "./ControlButtonGrid";
+import { Stack } from "@mui/material";
 
-function ControlBar() {
+import ControlButton from "./ControlButton";
+import FormatBoldIcon from "@mui/icons-material/FormatBold";
+import FormatItalicIcon from "@mui/icons-material/FormatItalic";
+import ClearAllIcon from "@mui/icons-material/ClearAll";
+import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
+import TextDecreaseIcon from "@mui/icons-material/TextDecrease";
+
+// Alignment
+
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import FormatAlignJustifyIcon from "@mui/icons-material/FormatAlignJustify";
+import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
+
+function ControlBar({
+  handleBold,
+  handleItalic,
+  handleClear,
+  handleAlignLeft,
+  handleAlignJustify,
+  handleAlignRight,
+  handleTextIncrease,
+  handleTextDecrease,
+}: {
+  handleBold: () => void;
+  handleItalic: () => void;
+  handleClear: () => void;
+  handleAlignLeft: () => void;
+  handleAlignJustify: () => void;
+  handleAlignRight: () => void;
+  handleTextIncrease: () => void;
+  handleTextDecrease: () => void;
+}) {
   return (
-    <Box
+    <Stack
+      direction={"row"}
+      spacing={4}
       sx={{
-        display: "flex",
-        alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#f0faff",
         width: "100vw",
         py: 1,
       }}
     >
-      <ControlButtonGrid
-        buttons={[
-          <ControlButton icon={<ClearIcon />} />,
-          <ControlButton icon={<ClearIcon />} />,
-          <ControlButton icon={<ClearIcon />} />,
-          <ControlButton icon={<ClearIcon />} />,
-        ]}
-      />
-    </Box>
+      <ControlButton onClick={handleBold} icon={<FormatBoldIcon />} />
+      <ControlButton onClick={handleItalic} icon={<FormatItalicIcon />} />
+      <ControlButton onClick={handleClear} icon={<ClearAllIcon />} />
+      <Stack direction={"row"} spacing={1}>
+        <ControlButton
+          onClick={handleAlignLeft}
+          icon={<FormatAlignLeftIcon />}
+        />
+        <ControlButton
+          onClick={handleAlignJustify}
+          icon={<FormatAlignJustifyIcon />}
+        />
+        <ControlButton
+          onClick={handleAlignRight}
+          icon={<FormatAlignRightIcon />}
+        />
+      </Stack>
+      <Stack direction={"row"} spacing={1}>
+        <ControlButton
+          onClick={handleTextIncrease}
+          icon={<TextIncreaseIcon />}
+        />
+        <ControlButton
+          onClick={handleTextDecrease}
+          icon={<TextDecreaseIcon />}
+        />
+      </Stack>
+    </Stack>
   );
 }
 

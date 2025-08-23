@@ -1,6 +1,12 @@
 import Button from "@mui/material/Button";
 
-const ControlButton = ({ icon }: { icon: React.ReactElement }) => {
+const ControlButton = ({
+  icon,
+  onClick,
+}: {
+  icon: React.ReactElement;
+  onClick: () => void;
+}) => {
   return (
     <Button
       variant="contained"
@@ -15,6 +21,7 @@ const ControlButton = ({ icon }: { icon: React.ReactElement }) => {
         cursor: "pointer",
         color: "#f6eccc",
       }}
+      onClick={onClick}
     >
       {icon}
     </Button>
