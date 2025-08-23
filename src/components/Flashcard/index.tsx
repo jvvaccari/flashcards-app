@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const Flashcard = ({ front, back }: { front: string; back: string }) => {
   const [flipped, setFlipped] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const cardStyle = {
     backgroundColor: "transparent",
@@ -13,15 +14,23 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    willChange: "transform",
+    transition: "box-shadow 0.2s",
+    boxShadow:
+      tilt.x !== 0 || tilt.y !== 0
+        ? "0 8px 32px rgba(0,0,0,0.18)"
+        : "0 2px 12px rgba(0,0,0,0.12)",
   };
 
   const innerStyle: React.CSSProperties = {
     position: "relative",
     width: "100%",
     height: "100%",
-    transition: "transform 1s",
+    transition: "transform 0.3s cubic-bezier(.23,1,.32,1)",
     transformStyle: "preserve-3d",
-    transform: flipped ? "rotateY(-180deg)" : "none",
+    transform: `rotateY(${flipped ? -180 : 0}deg) rotateX(${
+      tilt.y
+    }deg) rotateY(${tilt.x}deg)`,
   };
 
   const sideStyle: React.CSSProperties = {
@@ -41,8 +50,30 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
     display: "block",
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const maxTilt = 12;
+    const tiltX = ((x - centerX) / centerX) * maxTilt;
+    const tiltY = -((y - centerY) / centerY) * maxTilt;
+    setTilt({ x: tiltX, y: tiltY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
+
   return (
-    <Box style={cardStyle} onClick={() => setFlipped((f) => !f)}>
+    <Box
+      style={cardStyle}
+      onClick={() => setFlipped((f) => !f)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <Box style={innerStyle}>
         <Box style={sideStyle}>
           <img src={front} alt="Front" style={imgStyle} />
