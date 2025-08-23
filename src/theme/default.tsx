@@ -36,9 +36,9 @@ const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 8,
+    borderRadius: "16px",
   },
-  spacing: 8,
+  spacing: "8px",
 });
 
 // Adiciona a paleta customizada ao objeto theme

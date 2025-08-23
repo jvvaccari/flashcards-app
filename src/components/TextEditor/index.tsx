@@ -5,12 +5,13 @@ import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
 import FontSize from "@tiptap/extension-font-size";
 import { TextStyle } from "@tiptap/extension-text-style";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import Image from "@tiptap/extension-image";
 import { useRef } from "react";
 
 const TextEditor = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const theme = useTheme();
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -34,8 +35,8 @@ const TextEditor = () => {
   const handleAlignLeft = () => {
     editor?.chain().focus().setTextAlign("left").run();
   };
-  const handleAlignJustify = () => {
-    editor?.chain().focus().setTextAlign("justify").run();
+  const handleAlignCenter = () => {
+    editor?.chain().focus().setTextAlign("center").run();
   };
   const handleAlignRight = () => {
     editor?.chain().focus().setTextAlign("right").run();
@@ -91,7 +92,7 @@ const TextEditor = () => {
         handleItalic={handleItalic}
         handleClear={handleClear}
         handleAlignLeft={handleAlignLeft}
-        handleAlignJustify={handleAlignJustify}
+        handleAlignCenter={handleAlignCenter}
         handleAlignRight={handleAlignRight}
         handleTextIncrease={handleTextIncrease}
         handleTextDecrease={handleTextDecrease}
@@ -115,15 +116,17 @@ const TextEditor = () => {
       >
         <Box
           sx={{
-            width: "465px",
+            width: 465,
             aspectRatio: "2/3",
-            backgroundColor: "#f6eccc",
+            backgroundColor: theme.palette.background.default,
             backgroundImage: `radial-gradient(circle, rgba(61, 59, 59, 0.08) 1.4px, transparent 1.4px)`,
             backgroundSize: "20px 20px",
-            borderRadius: "16px",
-            border: "1px solid #888",
+            borderRadius: theme.shape.borderRadius,
+            border: `1px solid ${
+              theme.brand ? theme.brand[5] : theme.palette.primary.dark
+            }`,
             boxSizing: "border-box",
-            padding: "16px",
+            padding: theme.spacing(2),
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "center",

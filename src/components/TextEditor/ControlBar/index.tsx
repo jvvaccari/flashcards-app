@@ -19,7 +19,7 @@ function ControlBar({
   handleItalic,
   handleClear,
   handleAlignLeft,
-  handleAlignJustify,
+  handleAlignCenter,
   handleAlignRight,
   handleTextIncrease,
   handleTextDecrease,
@@ -29,7 +29,7 @@ function ControlBar({
   handleItalic: () => void;
   handleClear: () => void;
   handleAlignLeft: () => void;
-  handleAlignJustify: () => void;
+  handleAlignCenter: () => void;
   handleAlignRight: () => void;
   handleTextIncrease: () => void;
   handleTextDecrease: () => void;
@@ -55,7 +55,7 @@ function ControlBar({
           icon={<FormatAlignLeftIcon />}
         />
         <ControlButton
-          onClick={handleAlignJustify}
+          onClick={handleAlignCenter}
           icon={<FormatAlignJustifyIcon />}
         />
         <ControlButton
