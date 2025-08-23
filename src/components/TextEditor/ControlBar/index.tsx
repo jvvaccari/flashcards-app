@@ -6,6 +6,7 @@ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
 import TextDecreaseIcon from "@mui/icons-material/TextDecrease";
+import ImageIcon from "@mui/icons-material/Image";
 
 // Alignment
 
@@ -22,6 +23,7 @@ function ControlBar({
   handleAlignRight,
   handleTextIncrease,
   handleTextDecrease,
+  handleUploadClick,
 }: {
   handleBold: () => void;
   handleItalic: () => void;
@@ -31,6 +33,7 @@ function ControlBar({
   handleAlignRight: () => void;
   handleTextIncrease: () => void;
   handleTextDecrease: () => void;
+  handleUploadClick: () => void;
 }) {
   return (
     <Stack
@@ -69,6 +72,7 @@ function ControlBar({
           onClick={handleTextDecrease}
           icon={<TextDecreaseIcon />}
         />
+        <ControlButton icon={<ImageIcon />} onClick={handleUploadClick} />
       </Stack>
     </Stack>
   );

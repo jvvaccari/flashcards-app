@@ -6,14 +6,18 @@ import TextAlign from "@tiptap/extension-text-align";
 import FontSize from "@tiptap/extension-font-size";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Box } from "@mui/material";
+import Image from "@tiptap/extension-image";
+import { useRef } from "react";
 
 const TextEditor = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const editor = useEditor({
     extensions: [
       StarterKit,
       TextStyle,
       FontSize,
       TextAlign.configure({ types: ["heading", "paragraph"] }),
+      Image,
     ],
     content: "",
   });
@@ -57,6 +61,29 @@ const TextEditor = () => {
     editor?.chain().focus().setFontSize(`${newSize}px`).run();
   };
 
+  const handleUploadClick = () => {
+    inputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        editor
+          .chain()
+          .focus()
+          .setImage({
+            src: base64,
+            width: 300,
+          })
+          .run();
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <Stack sx={{ height: "100vh", width: "100vw" }}>
       <ControlBar
@@ -68,6 +95,15 @@ const TextEditor = () => {
         handleAlignRight={handleAlignRight}
         handleTextIncrease={handleTextIncrease}
         handleTextDecrease={handleTextDecrease}
+        handleUploadClick={handleUploadClick}
+      />
+
+      <input
+        type="file"
+        accept="image/*"
+        ref={inputRef}
+        style={{ display: "none" }}
+        onChange={handleFileChange}
       />
 
       <Stack
