@@ -1,90 +1,39 @@
 import Stack from "@mui/material/Stack";
 import ControlBar from "./ControlBar";
-import { useEditor, EditorContent } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
-import TextAlign from "@tiptap/extension-text-align";
-import FontSize from "@tiptap/extension-font-size";
-import { TextStyle } from "@tiptap/extension-text-style";
+import { EditorContent, useEditor } from "@tiptap/react";
 import { Box, useTheme } from "@mui/material";
-import Image from "@tiptap/extension-image";
-import { useRef } from "react";
 import "../../App.css";
 
-const TextEditor = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+const TextEditor = ({
+  editor,
+  inputRef,
+  handleBold,
+  handleItalic,
+  handleClear,
+  handleAlignLeft,
+  handleAlignCenter,
+  handleAlignRight,
+  handleTextIncrease,
+  handleTextDecrease,
+  handleUploadClick,
+  handleSaveContent,
+  handleFileChange,
+}: {
+  editor: ReturnType<typeof useEditor>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
+  handleBold: () => void;
+  handleItalic: () => void;
+  handleClear: () => void;
+  handleAlignLeft: () => void;
+  handleAlignCenter: () => void;
+  handleAlignRight: () => void;
+  handleTextIncrease: () => void;
+  handleTextDecrease: () => void;
+  handleUploadClick: () => void;
+  handleSaveContent: () => void;
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}) => {
   const theme = useTheme();
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      TextStyle,
-      FontSize,
-      TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
-      Image,
-    ],
-    content: "",
-  });
-
-  const handleBold = () => {
-    editor?.chain().focus().toggleBold().run();
-  };
-  const handleItalic = () => {
-    editor?.chain().focus().toggleItalic().run();
-  };
-  const handleClear = () => {
-    editor?.chain().focus().setContent("").run();
-  };
-  const handleAlignLeft = () => {
-    editor?.chain().focus().setTextAlign("left").run();
-  };
-  const handleAlignCenter = () => {
-    editor?.chain().focus().setTextAlign("center").run();
-  };
-  const handleAlignRight = () => {
-    editor?.chain().focus().setTextAlign("right").run();
-  };
-
-  const handleTextIncrease = () => {
-    const currentSizeRaw = editor?.getAttributes("textStyle").fontSize || 16;
-    const currentSize =
-      typeof currentSizeRaw === "string"
-        ? parseInt(currentSizeRaw)
-        : currentSizeRaw;
-    const newSize = Math.min(currentSize + 2, 48);
-    editor?.chain().focus().setFontSize(`${newSize}px`).run();
-  };
-
-  const handleTextDecrease = () => {
-    const currentSizeRaw = editor?.getAttributes("textStyle").fontSize || 16;
-    const currentSize =
-      typeof currentSizeRaw === "string"
-        ? parseInt(currentSizeRaw)
-        : currentSizeRaw;
-    const newSize = Math.max(currentSize - 2, 10);
-    editor?.chain().focus().setFontSize(`${newSize}px`).run();
-  };
-
-  const handleUploadClick = () => {
-    inputRef.current?.click();
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64 = reader.result as string;
-        editor
-          .chain()
-          .focus()
-          .setImage({
-            src: base64,
-            width: 300,
-          })
-          .run();
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   return (
     <Stack sx={{ height: "100vh", width: "100vw" }}>
@@ -98,6 +47,7 @@ const TextEditor = () => {
         handleTextIncrease={handleTextIncrease}
         handleTextDecrease={handleTextDecrease}
         handleUploadClick={handleUploadClick}
+        handleSaveContent={handleSaveContent}
       />
 
       <input

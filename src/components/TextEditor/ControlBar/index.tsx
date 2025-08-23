@@ -25,6 +25,7 @@ function ControlBar({
   handleTextIncrease,
   handleTextDecrease,
   handleUploadClick,
+  handleSaveContent,
 }: {
   handleBold: () => void;
   handleItalic: () => void;
@@ -35,6 +36,7 @@ function ControlBar({
   handleTextIncrease: () => void;
   handleTextDecrease: () => void;
   handleUploadClick: () => void;
+  handleSaveContent: () => void;
 }) {
   return (
     <Stack
@@ -74,7 +76,7 @@ function ControlBar({
           icon={<TextDecreaseIcon />}
         />
         <ControlButton icon={<ImageIcon />} onClick={handleUploadClick} />
-        <ControlButton onClick={handleTextIncrease} icon={<SaveAltIcon />} />
+        <ControlButton onClick={handleSaveContent} icon={<SaveAltIcon />} />
       </Stack>
     </Stack>
   );
