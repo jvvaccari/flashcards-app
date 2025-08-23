@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import Box from "@mui/material/Box";
 import React, { useState } from "react";
 
 const Flashcard = ({
@@ -14,7 +14,7 @@ const Flashcard = ({
   const cardStyle = {
     backgroundColor: "transparent",
     width: "100%",
-    maxWidth: "525px",
+    maxWidth: "465px",
     aspectRatio: "2/3",
     perspective: 1000,
     cursor: "pointer",
@@ -43,7 +43,7 @@ const Flashcard = ({
     height: "100%",
     backfaceVisibility: "hidden",
     borderRadius: 25,
-    overflow: "hidden",
+    overflow: "visible",
     backgroundColor: "transparent",
   };
 

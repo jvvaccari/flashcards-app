@@ -1,13 +1,29 @@
-import { IconPhoto } from "@tabler/icons-react";
+import ClearIcon from "@mui/icons-material/Clear";
 import ControlButton from "./ControlButton";
-import { useMantineTheme } from "@mantine/core";
+import Box from "@mui/material/Box";
+import ControlButtonGrid from "./ControlButtonGrid";
 
 function ControlBar() {
-  const theme = useMantineTheme();
   return (
-    <div>
-      <ControlButton icon={<IconPhoto size={theme.other.iconSize.sm} />} />
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f0faff",
+        width: "100vw",
+        py: 1,
+      }}
+    >
+      <ControlButtonGrid
+        buttons={[
+          <ControlButton icon={<ClearIcon />} />,
+          <ControlButton icon={<ClearIcon />} />,
+          <ControlButton icon={<ClearIcon />} />,
+          <ControlButton icon={<ClearIcon />} />,
+        ]}
+      />
+    </Box>
   );
 }
 

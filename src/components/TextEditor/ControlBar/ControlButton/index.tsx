@@ -1,33 +1,23 @@
-import { Button, useMantineTheme } from "@mantine/core";
+import Button from "@mui/material/Button";
 
 const ControlButton = ({ icon }: { icon: React.ReactElement }) => {
-  const theme = useMantineTheme();
-
   return (
     <Button
-      leftSection={
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {icon}
-        </span>
-      }
-      variant="gradient"
-      style={{
-        backgroundImage: `linear-gradient(to right, ${theme.colors.brand[6]}, ${theme.colors.brand[7]})`,
-        borderRadius: theme.radius.sm,
-        padding: 2,
+      variant="contained"
+      sx={{
+        background: "linear-gradient(to right, #2b3238, #212922)",
+        borderRadius: 1,
+        p: 1,
+        minWidth: 0,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         cursor: "pointer",
+        color: "#f6eccc",
       }}
-      c={theme.colors.brand[1]}
-    />
+    >
+      {icon}
+    </Button>
   );
 };
 
