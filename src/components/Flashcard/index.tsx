@@ -13,8 +13,9 @@ const Flashcard = ({
 
   const cardStyle = {
     backgroundColor: "transparent",
-    width: 525,
-    height: 787.5,
+    width: "100%",
+    maxWidth: "525px",
+    aspectRatio: "2/3",
     perspective: 1000,
     cursor: "pointer",
     display: "flex",
