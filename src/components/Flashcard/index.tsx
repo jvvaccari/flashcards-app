@@ -7,8 +7,8 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
 
   const cardStyle = {
     backgroundColor: "transparent",
-    width: 300,
-    height: 450,
+    width: 525,
+    height: 787.5,
     perspective: 1000,
     cursor: "pointer",
     display: "flex",
@@ -16,10 +16,6 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
     justifyContent: "center",
     willChange: "transform",
     transition: "box-shadow 0.2s",
-    boxShadow:
-      tilt.x !== 0 || tilt.y !== 0
-        ? "0 8px 32px rgba(0,0,0,0.18)"
-        : "0 2px 12px rgba(0,0,0,0.12)",
   };
 
   const innerStyle: React.CSSProperties = {
@@ -28,6 +24,7 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
     height: "100%",
     transition: "transform 0.3s cubic-bezier(.23,1,.32,1)",
     transformStyle: "preserve-3d",
+    backgroundColor: "transparent",
     transform: `rotateY(${flipped ? -180 : 0}deg) rotateX(${
       tilt.y
     }deg) rotateY(${tilt.x}deg)`,
@@ -40,6 +37,7 @@ const Flashcard = ({ front, back }: { front: string; back: string }) => {
     backfaceVisibility: "hidden",
     borderRadius: 25,
     overflow: "hidden",
+    backgroundColor: "transparent",
   };
 
   const imgStyle: React.CSSProperties = {
