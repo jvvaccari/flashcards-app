@@ -79,19 +79,26 @@ function App() {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        editor
-          .chain()
-          .focus()
-          .setImage({
-            src: "https://m.media-amazon.com/images/I/71e42Lw4QJL._AC_SX522_.jpg",
-            width: 300,
-          })
-          .run();
+        if (!editor) return;
+        const { state } = editor;
+        const selectionEmpty = state.selection.empty;
+        const imageAttrs = {
+          src: "https://m.media-amazon.com/images/I/71e42Lw4QJL._AC_SX522_.jpg",
+          width: 300,
+        };
+        if (selectionEmpty) {
+          editor
+            .chain()
+            .focus()
+            .insertContent({ type: "image", attrs: imageAttrs })
+            .run();
+        } else {
+          editor.chain().focus().setImage(imageAttrs).run();
+        }
       };
       reader.readAsDataURL(file);
     }
   };
-
   return (
     <Box
       sx={{
