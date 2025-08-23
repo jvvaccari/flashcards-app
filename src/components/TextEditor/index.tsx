@@ -8,6 +8,7 @@ import { TextStyle } from "@tiptap/extension-text-style";
 import { Box, useTheme } from "@mui/material";
 import Image from "@tiptap/extension-image";
 import { useRef } from "react";
+import "../../App.css";
 
 const TextEditor = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -17,7 +18,7 @@ const TextEditor = () => {
       StarterKit,
       TextStyle,
       FontSize,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
+      TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
       Image,
     ],
     content: "",
@@ -122,9 +123,6 @@ const TextEditor = () => {
             backgroundImage: `radial-gradient(circle, rgba(61, 59, 59, 0.08) 1.4px, transparent 1.4px)`,
             backgroundSize: "20px 20px",
             borderRadius: theme.shape.borderRadius,
-            border: `1px solid ${
-              theme.brand ? theme.brand[5] : theme.palette.primary.dark
-            }`,
             boxSizing: "border-box",
             padding: theme.spacing(2),
             display: "flex",
@@ -141,11 +139,8 @@ const TextEditor = () => {
               width: "100%",
               minHeight: "100%",
               fontSize: "16px",
-              background: "none",
-              border: "none",
-              outline: "none",
             }}
-            className="tiptap-editor"
+            className="editor"
           />
         </Box>
       </Stack>

@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import Button from "@mui/material/Button";
 
 const ControlButton = ({
@@ -7,11 +8,12 @@ const ControlButton = ({
   icon: React.ReactElement;
   onClick: () => void;
 }) => {
+  const theme = useTheme();
   return (
     <Button
       variant="contained"
       sx={{
-        background: "linear-gradient(to right, #2b3238, #212922)",
+        background: `linear-gradient(to right, ${theme.brand[6]}, ${theme.brand[7]})`,
         borderRadius: 1,
         p: 1,
         minWidth: 0,

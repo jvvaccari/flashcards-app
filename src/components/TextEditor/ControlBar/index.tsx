@@ -7,6 +7,7 @@ import ClearAllIcon from "@mui/icons-material/ClearAll";
 import TextIncreaseIcon from "@mui/icons-material/TextIncrease";
 import TextDecreaseIcon from "@mui/icons-material/TextDecrease";
 import ImageIcon from "@mui/icons-material/Image";
+import SaveAltIcon from "@mui/icons-material/SaveAlt";
 
 // Alignment
 
@@ -73,6 +74,7 @@ function ControlBar({
           icon={<TextDecreaseIcon />}
         />
         <ControlButton icon={<ImageIcon />} onClick={handleUploadClick} />
+        <ControlButton onClick={handleTextIncrease} icon={<SaveAltIcon />} />
       </Stack>
     </Stack>
   );
