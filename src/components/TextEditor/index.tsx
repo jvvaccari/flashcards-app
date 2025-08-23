@@ -81,8 +81,23 @@ const TextEditor = ({
             justifyContent: "center",
             overflow: "auto",
             position: "relative",
+
+            "&::-webkit-scrollbar": {
+              width: "8px",
+              background: "#3b4853",
+              borderRadius: "8px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "#b0c09f",
+              borderRadius: "8px",
+            },
+            "&::-webkit-scrollbar-thumb:hover": {
+              background: "#3b4853",
+            },
+
+            scrollbarWidth: "thin",
+            scrollbarColor: "#b0c09f #3b4853",
           }}
-          className="editor"
           onClick={() => editor?.chain().focus().run()}
         >
           <EditorContent
