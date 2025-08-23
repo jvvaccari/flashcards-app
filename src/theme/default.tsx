@@ -36,11 +36,16 @@ export default function Theme({ children }: { children: React.ReactNode }) {
           xl: "3rem",
         },
         radius: {
-          sm: "4px",
-          md: "8px",
-          lg: "16px",
+          sm: "2px",
+          md: "4px",
+          lg: "8px",
         },
         defaultRadius: "md",
+        other: {
+          iconSize: {
+            sm: 8,
+          },
+        },
       }}
     >
       {children}

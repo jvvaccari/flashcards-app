@@ -20,11 +20,11 @@ const ControlButton = ({ icon }: { icon: React.ReactElement }) => {
       style={{
         backgroundImage: `linear-gradient(to right, ${theme.colors.brand[6]}, ${theme.colors.brand[7]})`,
         borderRadius: theme.radius.sm,
-
         padding: 2,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        cursor: "pointer",
       }}
       c={theme.colors.brand[1]}
     />
