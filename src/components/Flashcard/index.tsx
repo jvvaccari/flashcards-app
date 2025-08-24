@@ -1,12 +1,10 @@
 import Box from "@mui/material/Box";
-import React, { useState } from "react";
+import { type ReactNode, useState } from "react";
 
 const Flashcard = ({
-  front,
   children,
 }: {
-  front: string;
-  children: React.ReactNode;
+  children: { front: ReactNode; back: ReactNode };
 }) => {
   const [flipped, setFlipped] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -47,14 +45,6 @@ const Flashcard = ({
     backgroundColor: "transparent",
   };
 
-  const imgStyle: React.CSSProperties = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: 25,
-    display: "block",
-  };
-
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -80,8 +70,13 @@ const Flashcard = ({
       onMouseLeave={handleMouseLeave}
     >
       <Box style={innerStyle}>
-        <Box style={sideStyle}>
-          <img src={front} alt="Front" style={imgStyle} />
+        <Box
+          style={{
+            ...sideStyle,
+            transform: "rotateY(0deg)",
+          }}
+        >
+          {children.front}
         </Box>
         <Box
           style={{
@@ -89,7 +84,7 @@ const Flashcard = ({
             transform: "rotateY(-180deg)",
           }}
         >
-          {children}
+          {children.back}
         </Box>
       </Box>
     </Box>

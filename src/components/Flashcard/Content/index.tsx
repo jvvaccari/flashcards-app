@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { type ReactNode } from "react";
 
-const BackContent = ({ content }: { content: string }) => {
+const Content = ({ content }: { content: ReactNode }) => {
   return (
     <Box
       sx={{
@@ -18,16 +18,9 @@ const BackContent = ({ content }: { content: string }) => {
         height: "100%",
       }}
     >
-      <Typography
-        onClick={(e) => {
-          e.stopPropagation();
-          console.log("Back content clicked");
-        }}
-      >
-        {content}
-      </Typography>
+      {content}
     </Box>
   );
 };
 
-export default BackContent;
+export default Content;

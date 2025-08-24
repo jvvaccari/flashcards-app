@@ -1,9 +1,9 @@
 import "./App.css";
 import Box from "@mui/material/Box";
-import CreatePage from "./pages/Flashcard/CreatePage";
-// import Flashcard from "./components/Flashcard";
-// import front from "./assets/front.jpg";
-// import BackContent from "./components/Flashcard/BackContent";
+// import CreatePage from "./pages/Flashcard/CreatePage";
+
+import Flashcard from "./components/Flashcard";
+import Content from "./components/Flashcard/Content";
 
 function App() {
   return (
@@ -20,11 +20,13 @@ function App() {
         overflow: "hidden",
       }}
     >
-      {/* <Flashcard
-        front={front}
-        children={<BackContent content="Back content goes here" />}
-      /> */}
-      <CreatePage />
+      <Flashcard
+        children={{
+          front: <Content content="Front content goes here" />,
+          back: <Content content="Back content goes here" />,
+        }}
+      />
+      {/* <CreatePage /> */}
     </Box>
   );
 }
