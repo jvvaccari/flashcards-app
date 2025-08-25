@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import { type ReactNode, useState } from "react";
 
-const Flashcard = ({
+const RotatingCard = ({
   children,
 }: {
   children: { front: ReactNode; back: ReactNode };
@@ -91,4 +91,4 @@ const Flashcard = ({
   );
 };
 
-export default Flashcard;
+export default RotatingCard;

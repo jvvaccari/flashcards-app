@@ -1,9 +1,9 @@
 import "./App.css";
 import Box from "@mui/material/Box";
-// import CreatePage from "./pages/Flashcard/CreatePage";
+import CreatePage from "./pages/Flashcard/CreatePage";
 
-import Flashcard from "./components/Flashcard";
-import Content from "./components/Flashcard/Content";
+import Content from "./components/RotatingCard/Content";
+import RotatingCard from "./components/RotatingCard";
 
 function App() {
   return (
@@ -16,17 +16,18 @@ function App() {
         alignItems: "center",
         backgroundColor: "#212529",
         margin: 0,
+        
         padding: 0,
         overflow: "hidden",
       }}
     >
-      <Flashcard
+      <RotatingCard
         children={{
           front: <Content content="Front content goes here" />,
           back: <Content content="Back content goes here" />,
         }}
       />
-      {/* <CreatePage /> */}
+       {/* <CreatePage /> */}
     </Box>
   );
 }
