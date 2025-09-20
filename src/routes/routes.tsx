@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     element: <CreateCardPage />,
   },
   {
-    path: "/flashcard",
+    path: "/flashcards/:id",
     element: <ShowCardPage />,
   },
 ]);

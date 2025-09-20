@@ -11,7 +11,7 @@ const ShowCardPage = () => {
   useEffect(() => {
     const fetchFlashCard = async () => {
       try {
-        const data = await flashCardService.getById("68cef5b4717a79c30df2521b");
+        const data = await flashCardService.getById("68ceff260ecb3063a2b02665");
         setFlashCard(data);
       } catch (error) {
         console.error("Erro ao buscar flashcard:", error);
