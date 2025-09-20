@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
 import Theme from "./theme/default.tsx";
+import { AppRoutes } from "./routes/routes.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Theme>
-      <App />
+      <AppRoutes />
     </Theme>
   </StrictMode>
 );

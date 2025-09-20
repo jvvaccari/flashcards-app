@@ -8,7 +8,7 @@ import { useEditor } from "@tiptap/react";
 import { useRef } from "react";
 import TextEditor from "../../components/TextEditor";
 
-const CreatePage = () => {
+const CreateCardPage = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({
@@ -127,4 +127,4 @@ const CreatePage = () => {
   );
 };
 
-export default CreatePage;
+export default CreateCardPage;

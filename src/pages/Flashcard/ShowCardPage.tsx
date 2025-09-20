@@ -1,11 +1,8 @@
-import "./App.css";
-import Box from "@mui/material/Box";
-import CreatePage from "./pages/Flashcard/CreatePage";
+import { Box } from "@mui/material";
+import RotatingCard from "../../components/RotatingCard";
+import Content from "../../components/RotatingCard/Content";
 
-import Content from "./components/RotatingCard/Content";
-import RotatingCard from "./components/RotatingCard";
-
-function App() {
+const ShowCardPage = () => {
   return (
     <Box
       sx={{
@@ -16,7 +13,7 @@ function App() {
         alignItems: "center",
         backgroundColor: "#212529",
         margin: 0,
-        
+
         padding: 0,
         overflow: "hidden",
       }}
@@ -27,9 +24,8 @@ function App() {
           back: <Content content="Back content goes here" />,
         }}
       />
-       {/* <CreatePage /> */}
     </Box>
   );
-}
+};
 
-export default App;
+export default ShowCardPage;

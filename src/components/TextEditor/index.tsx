@@ -50,7 +50,8 @@ const TextEditor = ({
         handleSaveContent={handleSaveContent}
       />
 
-      <input
+      <Box
+        component="input"
         type="file"
         accept="image/*"
         ref={inputRef}
