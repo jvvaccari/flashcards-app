@@ -1,3 +1,4 @@
+import { FlashcardResume } from "../../interfaces/Flashcard/FlashcardResume";
 import IApiClient from "../../interfaces/IApiClient";
 
 export default class FlashCard {
@@ -10,7 +11,7 @@ export default class FlashCard {
         return response.data;
     }
 
-    public async getById(id: string) {
+    public async getById(id: string): Promise<FlashcardResume | null> {
         const response = await this.api.get(`/flashcards/${id}`);
         return response.data;
     }
