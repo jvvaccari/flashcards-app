@@ -4,14 +4,17 @@ import Content from "../../components/RotatingCard/Content";
 import { useEffect, useState } from "react";
 import { flashCardService } from "../../services";
 import { FlashcardResume } from "../../interfaces/Flashcard/FlashcardResume";
+import { useParams } from "react-router-dom";
 
 const ShowCardPage = () => {
   const [flashCard, setFlashCard] = useState<FlashcardResume | null>(null);
+  const { id } = useParams();
 
   useEffect(() => {
+    if (!id) return;
     const fetchFlashCard = async () => {
       try {
-        const data = await flashCardService.getById("68ceff260ecb3063a2b02665");
+        const data = await flashCardService.getById(id);
         setFlashCard(data);
       } catch (error) {
         console.error("Erro ao buscar flashcard:", error);
