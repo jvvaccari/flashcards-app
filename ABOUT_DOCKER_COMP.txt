@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: flashcards-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    restart: always
+  api:
+    container_name: flashcards-api
+    build: ./flashcards-api
+    restart: always
+    ports:
+      - "5002:5002"
+    env_file:
+      - ./flashcards-api/.env
+    depends_on:
+      - mongodb
+  app:
+    container_name: flashcards-app
+    build: ./flashcards-app
+    restart: always
+    env_file:
+      - ./flashcards-app/.env
+    depends_on:
+      - api
+
+  nginx:
+    container_name: flashcards-nginx
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./flashcards-app/dist:/var/www/html
+    depends_on:
+      - app
+      - api
+      - mongodb
+
+volumes:
+  mongodb-data:
