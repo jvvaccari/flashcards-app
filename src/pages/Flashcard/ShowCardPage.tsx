@@ -21,7 +21,7 @@ const ShowCardPage = () => {
       }
     };
     fetchFlashCard();
-  }, []);
+  }, [id]);
 
   return (
     <Box
